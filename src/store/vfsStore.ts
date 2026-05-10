@@ -32,10 +32,12 @@ export const useVfsStore = create<VfsState>((set, get) => ({
   createFile: (path, content = '') => {
     const normalizedPath = normalizeFilePath(path)
 
-    set((state) => ({
-      activeFilePath: normalizedPath,
-      files: createFile(state.files, normalizedPath, content),
-    }))
+    set((state) => {
+      return {
+        activeFilePath: normalizedPath,
+        files: createFile(state.files, normalizedPath, content),
+      }
+    })
   },
 
   deleteFile: (path) => {
